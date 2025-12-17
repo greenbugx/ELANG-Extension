@@ -3,7 +3,7 @@
   "displayName": "EasyLang(ELANG)",
   "icon": "Logo_nobg.png",
   "description": "Syntax highlighting and language support for EasyLang, an educational English-like scripting language.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "publisher": "Greenbugx0xNA",
   "repository": {
     "type": "git",

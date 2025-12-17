@@ -31,6 +31,9 @@
       "include": "#keywords-io"
     },
     {
+      "include": "#keywords-module"
+    },
+    {
       "include": "#keywords-types"
     },
     {
@@ -47,6 +50,9 @@
     },
     {
       "include": "#variables-self"
+    },
+    {
+      "include": "#dict-literal"
     },
     {
       "include": "#punctuation"
@@ -132,12 +138,16 @@
           "match": "\\b(let|constant)\\b"
         },
         {
+          "name": "keyword.operator.assignment.easylang",
+          "match": "\\b(be|=)\\b"
+        },
+        {
           "name": "storage.modifier.easylang",
           "match": "\\bso\\b"
         },
         {
-          "name": "keyword.other.assignment.easylang",
-          "match": "\\bbe\\b"
+          "name": "keyword.other.define.easylang",
+          "match": "\\bdefine\\b"
         }
       ]
     },
@@ -161,7 +171,19 @@
       "patterns": [
         {
           "name": "keyword.other.io.easylang",
-          "match": "\\b(print|read|open|close|readline|writeline|write|append|bring|as|into|for|with)\\b"
+          "match": "\\b(print|read|open|close|readline|writeline|write|append)\\b"
+        },
+        {
+          "name": "keyword.other.io.modifier.easylang",
+          "match": "\\b(as|into|for|with)\\b"
+        }
+      ]
+    },
+    "keywords-module": {
+      "patterns": [
+        {
+          "name": "keyword.other.import.easylang",
+          "match": "\\b(bring)\\b"
         }
       ]
     },
@@ -177,11 +199,23 @@
       "patterns": [
         {
           "name": "keyword.operator.arithmetic.word.easylang",
-          "match": "\\b(plus|minus|less|greater|mul|div|modulus|expo)\\b"
+          "match": "\\b(plus|minus|mul|div|modulus|expo)\\b"
+        },
+        {
+          "name": "keyword.operator.comparison.word.easylang",
+          "match": "\\b(less|greater|equals)\\b"
         },
         {
           "name": "keyword.operator.assignment.compound.easylang",
           "match": "\\+=|-=|\\*=|/=|%="
+        },
+        {
+          "name": "keyword.operator.power.easylang",
+          "match": "\\*\\*"
+        },
+        {
+          "name": "keyword.operator.intdiv.easylang",
+          "match": "(?<![*])//(?![/])"
         },
         {
           "name": "keyword.operator.arithmetic.symbol.easylang",
@@ -192,12 +226,36 @@
           "match": "==|!=|<=|>=|<|>"
         },
         {
-          "name": "keyword.operator.power.easylang",
-          "match": "\\*\\*|//"
-        },
+          "name": "keyword.operator.assign.easylang",
+          "match": "="
+        }
+      ]
+    },
+    "dict-literal": {
+      "patterns": [
         {
-          "name": "keyword.operator.other.easylang",
-          "match": ":"
+          "name": "meta.dict.easylang",
+          "begin": "\\{",
+          "end": "\\}",
+          "patterns": [
+            {
+              "name": "variable.other.key.easylang",
+              "match": "\\b[A-Za-z_]\\w*\\b(?=\\s*:)"
+            },
+            {
+              "name": "punctuation.separator.key-value.easylang",
+              "match": ":"
+            },
+            {
+              "include": "#strings"
+            },
+            {
+              "include": "#numbers"
+            },
+            {
+              "include": "#booleans-null"
+            }
+          ]
         }
       ]
     },
@@ -227,6 +285,12 @@
             },
             {
               "include": "#numbers"
+            },
+            {
+              "include": "#keywords-decl"
+            },
+            {
+              "include": "#operators"
             }
           ]
         },
@@ -243,7 +307,7 @@
     "function-decl": {
       "patterns": [
         {
-          "name": "meta.function.definition.easylang",
+          "name": "meta.function.definition.method.easylang",
           "begin": "\\bdefine\\s+method\\s+([A-Za-z_]\\w*)\\s*\\(",
           "beginCaptures": {
             "1": {
@@ -279,6 +343,16 @@
               "include": "#punctuation"
             }
           ]
+        },
+        {
+          "name": "meta.function.definition.no-params.easylang",
+          "begin": "\\bdefine\\s+([A-Za-z_]\\w*)\\s*\\(\\s*\\)",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.function.easylang"
+            }
+          },
+          "end": ":\\s*do"
         }
       ]
     },
@@ -293,6 +367,10 @@
     "punctuation": {
       "patterns": [
         {
+          "name": "punctuation.section.braces.easylang",
+          "match": "[\\{\\}]"
+        },
+        {
           "name": "punctuation.section.brackets.easylang",
           "match": "[\\[\\]]"
         },
@@ -305,15 +383,15 @@
           "match": ","
         },
         {
-          "name": "punctuation.separator.colon.easylang",
-          "match": ":"
-        },
-        {
           "name": "punctuation.accessor.dot.easylang",
           "match": "\\."
+        },
+        {
+          "name": "punctuation.terminator.colon.easylang",
+          "match": ":"
         }
       ]
     }
   },
-  "uuid": "easylang-syntax-012"
+  "uuid": "easylang-syntax-015"
 }
