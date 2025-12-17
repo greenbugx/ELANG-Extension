@@ -2,7 +2,8 @@
 
 Basic language support for **EasyLang**:
 
-> [!TIP] This extension can be downloaded from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Greenbugx0xNA.easylang) or installed directly within VS Code by searching for "EasyLang".
+> [!TIP] 
+> This extension can be downloaded from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Greenbugx0xNA.easylang) or installed directly within VS Code by searching for "EasyLang".
 
 ## Features
 
