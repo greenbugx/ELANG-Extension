@@ -1,0 +1,46 @@
+{
+  "name": "easylang",
+  "displayName": "EasyLang(ELANG)",
+  "icon": "Logo_nobg.png",
+  "description": "Syntax highlighting and language support for EasyLang, an educational English-like scripting language.",
+  "version": "0.1.4",
+  "publisher": "Greenbugx0xNA",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/greenbugx/ELANG-Extension.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Education"
+  ],
+  "keywords": [
+    "easylang",
+    "elang",
+    "educational",
+    "scripting",
+    "beginner-friendly",
+    "english-like"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "easylang",
+        "aliases": ["EasyLang", "easylang", "ELANG", "ELang", "elang"],
+        "extensions": [".elang", ".elangh"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "easylang",
+        "scopeName": "source.easylang",
+        "path": "./syntaxes/easylang.tmLanguage.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,319 @@
+{
+  "name": "EasyLang",
+  "scopeName": "source.easylang",
+  "fileTypes": [
+    "elang",
+    "elangh"
+  ],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#keywords-control"
+    },
+    {
+      "include": "#keywords-decl"
+    },
+    {
+      "include": "#keywords-match"
+    },
+    {
+      "include": "#keywords-logic"
+    },
+    {
+      "include": "#keywords-io"
+    },
+    {
+      "include": "#keywords-types"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#booleans-null"
+    },
+    {
+      "include": "#class-decl"
+    },
+    {
+      "include": "#function-decl"
+    },
+    {
+      "include": "#variables-self"
+    },
+    {
+      "include": "#punctuation"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.block.easylang",
+          "begin": "\\$\\$",
+          "end": "\\$\\$"
+        },
+        {
+          "name": "comment.line.easylang",
+          "match": "^\\s*\\$(?!\\$).*$"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.easylang",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.easylang",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.easylang",
+          "match": "\\b\\d+\\.\\d+\\b"
+        },
+        {
+          "name": "constant.numeric.integer.easylang",
+          "match": "\\b\\d+\\b"
+        }
+      ]
+    },
+    "booleans-null": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.easylang",
+          "match": "\\b(true|false)\\b"
+        },
+        {
+          "name": "constant.language.null.easylang",
+          "match": "\\bnull\\b"
+        }
+      ]
+    },
+    "keywords-control": {
+      "patterns": [
+        {
+          "name": "keyword.control.conditional.easylang",
+          "match": "\\b(if|then|else|else\\s+if|elseif)\\b"
+        },
+        {
+          "name": "keyword.control.loop.easylang",
+          "match": "\\b(repeat|while|from|to|do)\\b"
+        },
+        {
+          "name": "keyword.control.flow.easylang",
+          "match": "\\b(continue|break|return)\\b"
+        },
+        {
+          "name": "keyword.control.trycatch.easylang",
+          "match": "\\b(try|handle)\\b"
+        }
+      ]
+    },
+    "keywords-decl": {
+      "patterns": [
+        {
+          "name": "storage.type.variable.easylang",
+          "match": "\\b(let|constant)\\b"
+        },
+        {
+          "name": "storage.modifier.easylang",
+          "match": "\\bso\\b"
+        },
+        {
+          "name": "keyword.other.assignment.easylang",
+          "match": "\\bbe\\b"
+        }
+      ]
+    },
+    "keywords-match": {
+      "patterns": [
+        {
+          "name": "keyword.control.pattern-match.easylang",
+          "match": "\\b(match|when|otherwise|with)\\b"
+        }
+      ]
+    },
+    "keywords-logic": {
+      "patterns": [
+        {
+          "name": "keyword.operator.logical.easylang",
+          "match": "\\b(and|or|not|equals|not\\s+equals)\\b"
+        }
+      ]
+    },
+    "keywords-io": {
+      "patterns": [
+        {
+          "name": "keyword.other.io.easylang",
+          "match": "\\b(print|read|open|close|readline|writeline|write|append|bring|as|into|for|with)\\b"
+        }
+      ]
+    },
+    "keywords-types": {
+      "patterns": [
+        {
+          "name": "storage.type.primitive.easylang",
+          "match": "\\b(int|float|text|boolean)\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.arithmetic.word.easylang",
+          "match": "\\b(plus|minus|less|greater|mul|div|modulus|expo)\\b"
+        },
+        {
+          "name": "keyword.operator.assignment.compound.easylang",
+          "match": "\\+=|-=|\\*=|/=|%="
+        },
+        {
+          "name": "keyword.operator.arithmetic.symbol.easylang",
+          "match": "[+\\-*/%]"
+        },
+        {
+          "name": "keyword.operator.comparison.symbol.easylang",
+          "match": "==|!=|<=|>=|<|>"
+        },
+        {
+          "name": "keyword.operator.power.easylang",
+          "match": "\\*\\*|//"
+        },
+        {
+          "name": "keyword.operator.other.easylang",
+          "match": ":"
+        }
+      ]
+    },
+    "class-decl": {
+      "patterns": [
+        {
+          "name": "meta.class.easylang",
+          "begin": "\\bdefine\\s+class\\s+([A-Za-z_]\\w*)",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.type.class.easylang"
+            },
+            "0": {
+              "name": "storage.type.class.easylang"
+            }
+          },
+          "end": "\\]",
+          "patterns": [
+            {
+              "include": "#comments"
+            },
+            {
+              "include": "#function-decl"
+            },
+            {
+              "include": "#strings"
+            },
+            {
+              "include": "#numbers"
+            }
+          ]
+        },
+        {
+          "name": "keyword.other.class.easylang",
+          "match": "\\b(class)\\b"
+        },
+        {
+          "name": "keyword.other.make-instance.easylang",
+          "match": "\\b(make)\\b"
+        }
+      ]
+    },
+    "function-decl": {
+      "patterns": [
+        {
+          "name": "meta.function.definition.easylang",
+          "begin": "\\bdefine\\s+method\\s+([A-Za-z_]\\w*)\\s*\\(",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.function.method.easylang"
+            }
+          },
+          "end": "\\)\\s*:\\s*do",
+          "patterns": [
+            {
+              "name": "variable.parameter.easylang",
+              "match": "[A-Za-z_]\\w*"
+            },
+            {
+              "include": "#punctuation"
+            }
+          ]
+        },
+        {
+          "name": "meta.function.definition.free.easylang",
+          "begin": "\\bdefine\\s+([A-Za-z_]\\w*)\\s*\\(",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.function.easylang"
+            }
+          },
+          "end": "\\)\\s*:\\s*do",
+          "patterns": [
+            {
+              "name": "variable.parameter.easylang",
+              "match": "[A-Za-z_]\\w*"
+            },
+            {
+              "include": "#punctuation"
+            }
+          ]
+        }
+      ]
+    },
+    "variables-self": {
+      "patterns": [
+        {
+          "name": "variable.language.self.easylang",
+          "match": "\\bself\\b"
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.section.brackets.easylang",
+          "match": "[\\[\\]]"
+        },
+        {
+          "name": "punctuation.section.parens.easylang",
+          "match": "[()]"
+        },
+        {
+          "name": "punctuation.separator.comma.easylang",
+          "match": ","
+        },
+        {
+          "name": "punctuation.separator.colon.easylang",
+          "match": ":"
+        },
+        {
+          "name": "punctuation.accessor.dot.easylang",
+          "match": "\\."
+        }
+      ]
+    }
+  },
+  "uuid": "easylang-syntax-012"
+}
